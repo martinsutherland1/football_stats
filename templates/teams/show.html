@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content  %}
+
+<h1><label>{{team.name}}</label></h1> 
+<p>Points P90: {{points_per_game}}</p>
+<p>Goals P90: {{goals_per_game}}</p>
+<p>Goals Against P90: {{goals_v_per_game}}</p>
+<p>% won: {{percentage_won}}</p>
+
+
+
+    
+    
+    
+    
+      
+        <form action="/teams/{{ team.id }}/delete" method="POST">
+          <input id="btn-delete" type="submit" value="Delete" />
+        </form>
+      
+
+      
+          <form action="/teams/{{ team.id }}/edit">
+            <input id="btn-edit" type="submit" value="Edit">
+          </form>
+      
+    
+      
+
+
+  
+    
+{% endblock  %}
+    

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="member-full-div">
+
+    
+
+    
+    <div id="new-member-btm-div">
+        <h1 id="classes-head">SPFL Premiership</h1>
+       
+        
+
+    </div>
+    <table id="members">
+        <tr>
+            <th>Name</th>
+            <th>Matches</th>
+            <th>Points</th>
+            <th>Goals for</th>
+            <th>Goals against</th>
+            
+        </tr>
+        {% for team in teams %}
+        <tr>
+            <td><a href="/teams/{{team.id}}"> {{team.name}}</a></td>
+            <td>{{team.matches}}</td>
+            <td>{{team.points}}</td>
+            <td>{{team.goals_for}}</td>
+            <td>{{team.goals_against}}</td>
+           
+        </tr>
+            
+        {% endfor %}
+    </table>
+
+</div>
+   
+{% endblock %}
