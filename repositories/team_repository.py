@@ -5,8 +5,8 @@ from models.team import Team
 
 
 def save(team):
-    sql = "INSERT INTO teams (name, matches, points, goals_for, goals_against) VALUES (%s, %s, %s, %s, %s) RETURNING id"
-    values = [team.name, team.matches, team.points, team.goals_for, team.goals_against]
+    sql = "INSERT INTO teams (name, matches, won, points, goals_for, goals_against) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id"
+    values = [team.name, team.matches, team.won, team.points, team.goals_for, team.goals_against]
     results = run_sql(sql, values)
     team.id = results[0]['id']
     return team
@@ -18,7 +18,7 @@ def select_all():
     sql = "SELECT * FROM teams"
     results = run_sql(sql)
     for row in results:
-        team = Team(row["name"], row["matches"], row["points"],row["goals_for"], row["goals_against"], row["id"])
+        team = Team(row["name"], row["matches"], row["won"], row["points"],row["goals_for"], row["goals_against"], row["id"])
         teams.append(team)
     return teams
 
@@ -30,7 +30,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        team = Team(result["name"], result["matches"], result["points"], result["goals_for"], result["goals_against"], result["id"])
+        team = Team(result["name"], result["matches"], result["won"], result["points"], result["goals_for"], result["goals_against"], result["id"])
     return team
 
 
@@ -60,6 +60,7 @@ def delete(id):
 
 
 def update(team):
-    sql = "UPDATE teams SET (name, matches, points, goals_for, goals_against) = (%s, %s, %s, %s, %s) WHERE id = %s"
-    values = [team.name, team.matches, team.points, team.goals_for, team.goals_against]
+    sql = "UPDATE teams SET (name, matches, won, points, goals_for, goals_against) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
+    values = [team.name, team.matches, team.won, team.points, team.goals_for, team.goals_against, team.id]
     results = run_sql(sql, values)
+

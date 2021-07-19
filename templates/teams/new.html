@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <form action="/teams" method="post">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="" required autofocus>
+        </div>
+        <div>
+            <label for="matches">Matches:</label>
+            <input type="number" id="matches" name="matches" placeholder="" required>
+        </div>
+        <div>
+            <label for="won">Matches Won:</label>
+            <input type="number" id="won" name="won" placeholder="" required>
+        </div>
+        <div>
+            <label for="points">Points:</label>
+            <input type="number" id="points" name="points" placeholder="" required>
+        </div>
+        <div>
+            <label for="goals_for">Scored:</label>
+            <input type="number" id="goals_for" name="goals_for" placeholder="" required>
+        </div>
+        <div>
+            <label for="goals_against">Conceded:</label>
+            <input type="number" id="goals_against" name="goals_against" placeholder="" required>
+        </div>
+        
+        <div>
+            <button type="submit">Save</button>
+        </div>
+      
+    
+    </form>
+</div>
+
+    
+{% endblock  %}
